@@ -16,7 +16,7 @@ public class Listas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       miLista listica = new miLista();
+        miLista listica = new miLista();
 //       listica.add(55);
 //       listica.add(66);
 //       listica.add(77);
@@ -27,13 +27,30 @@ public class Listas {
 //       listica.add(121);
 //       listica.add(131);
 //       listica.add(8);
-       listica.addOrdered(11);
-       listica.addOrdered(8);
-       listica.addOrdered(6);
-       listica.addOrdered(13);
-       listica.addOrdered(9);
-       
+        listica.addOrdered(11);
+        listica.addOrdered(8);
+        listica.addOrdered(6);
+        listica.addOrdered(13);
+        listica.addOrdered(9);
+
+        System.out.println(listica.showData());
+//        listica.delete();
+//        listica.delete();
+//        listica.delete();
+//        listica.delete();
+//        listica.delete();
+//        listica.delete();
+//        listica.delete();
+        listica.deleteLast();
+        listica.deleteLast();
+        listica.deleteLast();
+        listica.deleteLast();
+        listica.deleteLast();
+        listica.deleteLast();
+        listica.deleteLast();
+        listica.deleteLast();
+
         System.out.println(listica.showData());
     }
-    
+
 }

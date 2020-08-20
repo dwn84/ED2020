@@ -78,4 +78,38 @@ public class miLista {
             current.setNextNode(newNode);          
         }
     }
+    
+    //borrar el primer dato de la lista
+    public void delete(){
+
+        if(isEmpty()){
+            System.out.println("No existen datos a borrar");
+        }else{
+            head = head.getNextNode();
+        }
+    }
+    
+    //borrar el último elemento
+    public Node deleteLast(){
+        if(isEmpty()){
+            System.out.println("No existen datos a borrar");
+            return null;
+        //validar si existe un solo dato
+        }else if(head.getNextNode()==null){
+            Node temp = head;
+            head = null;       
+            return temp;
+        }else{
+            Node temp = head;
+            Node current = head;
+            while(current.getNextNode().getNextNode()!=null){
+                current = current.getNextNode();
+                temp = current;
+            }
+            current.setNextNode(null);
+            return temp;
+        }
+    
+    }
+    
 }
