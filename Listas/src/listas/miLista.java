@@ -81,7 +81,6 @@ public class miLista {
     
     //borrar el primer dato de la lista
     public void delete(){
-
         if(isEmpty()){
             System.out.println("No existen datos a borrar");
         }else{
