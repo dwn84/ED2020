@@ -13,7 +13,13 @@ public class DoubleNode {
     private int data;
     private DoubleNode nextNode;
     private DoubleNode previosNode;
-
+    
+    public DoubleNode(int d){
+        this.data = d;
+        this.nextNode = null;
+        this.previosNode = null;
+    }
+    
     public DoubleNode(DoubleNode previosNode, int data, DoubleNode nextNode) {
         this.data = data;
         this.nextNode = nextNode;

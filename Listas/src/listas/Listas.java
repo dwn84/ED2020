@@ -19,6 +19,20 @@ public class Listas {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        ListaCircularDoble lista4 = new ListaCircularDoble();
+        lista4.add(55);
+        lista4.add(66);
+        lista4.add(77);
+        lista4.add(88);
+        lista4.add(99);
+
+        System.out.println("");
+        ListaCircularSimple lista3 = new ListaCircularSimple();
+        lista3.add(55);
+        lista3.add(66);
+        lista3.add(77);
+        System.out.println(lista3.showData());
+        
         ListaDoble lista2 = new ListaDoble();
         lista2.addLast(55);
         lista2.addLast(66);
