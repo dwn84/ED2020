@@ -65,7 +65,23 @@ public class ListaDoble {
             head.getNextNode().setPreviosNode(null);
         }
     }
+    
+    /**
+     * Borrar el último nodo
+     */
 
+    public void deleteLast(){
+        //modificar la cola
+    }
+    
+    /**
+     * Buscar un dato
+     */
+    
+    public boolean search(int d){
+        //recorrer y comparar
+        return true;
+    }
     /**
      * Método para mostrar los datos ascendentemente 
      * Inicia desde la cabeza hasta el final

@@ -42,5 +42,27 @@ public class ListaCircularDoble {
             head = newNode;
         }
     }
-
+    
+    /**
+     * ELiminar el último nodo
+     */
+    public void deleteLast(){
+        //modificar el anterior de la cabeza
+    }
+    
+    /**
+     * Mostrar los datos de la lista desde el primero al último
+     * @return 
+     */
+    public String showData() {
+        return "";
+    }
+    
+    /**
+     * Mostrar los datos de la lista desde el último al primero
+     * @return 
+     */
+    public String showDataDesc() {
+        return "";
+    }
 }

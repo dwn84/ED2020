@@ -12,19 +12,38 @@ package listas;
 public class miLista {
 
     private Node head;
+    private int totaldatos;
+    private int mayor=0;
+    private int menor;
+    private int suma=0;
+    
 
     public miLista() {
         head = null;
     }
 
+    public int TotalDatos(){
+        return totaldatos;
+    }
+    
     private boolean isEmpty() {
         return head == null;
     }
-
+    /**
+     * Agregar datos al inicio de la estructura
+     * @param n ell dato del nodo
+     */
     public void add(int n) {
+        //acumular
+        
+        //comparar mayor
+        if(n>mayor){
+            mayor = n;
+        }
         Node newNode = new Node(n);
         newNode.setNextNode(head);
         head = newNode;
+        totaldatos++;
     }
 
     public String showData() {
@@ -43,6 +62,12 @@ public class miLista {
 
     public void addOrdered(int d) {
         //Crear un nodo para el nuevo dato.
+        //acumular
+        
+        //comparar mayor
+        if(d>mayor){
+            mayor = d;
+        }
         Node newNode = new Node(d);
         /*
             Si la lista esta vacía, o el valor del primer elemento 
@@ -77,6 +102,14 @@ public class miLista {
             newNode.setNextNode(current.getNextNode());
             current.setNextNode(newNode);          
         }
+        totaldatos++;
+    }
+    
+    /**
+     * Agregar datos al final
+     */
+    public void addLast(int d){
+    
     }
     
     //borrar el primer dato de la lista
@@ -85,6 +118,7 @@ public class miLista {
             System.out.println("No existen datos a borrar");
         }else{
             head = head.getNextNode();
+            totaldatos--;
         }
     }
     
@@ -96,7 +130,8 @@ public class miLista {
         //validar si existe un solo dato
         }else if(head.getNextNode()==null){
             Node temp = head;
-            head = null;       
+            head = null; 
+            totaldatos--;
             return temp;
         }else{
             Node temp = head;
@@ -106,9 +141,10 @@ public class miLista {
                 temp = current;
             }
             current.setNextNode(null);
+            totaldatos--;
             return temp;
         }
-    
+        
     }
     
 }

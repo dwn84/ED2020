@@ -54,4 +54,22 @@ public class ListaCircularSimple {
         return data;
     }
     
+    /**
+     * Eliminar el primer nodo
+     */
+    
+    public void delete(){
+        //cambiar la cabeza - cambiar cola
+        //el segundo dato es head.getNextNode();
+    }
+    
+    /**
+     * Unir lista circular simple
+     */
+    
+    public void join(ListaCircularSimple otherList){
+        //a la cola la enlazo con la cabeza de la otra lista
+        //a la cola de la otra otra lista la enlazo con mi cabeza
+    }
+    
 }

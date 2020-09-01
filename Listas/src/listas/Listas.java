@@ -31,8 +31,20 @@ public class Listas {
         lista3.add(55);
         lista3.add(66);
         lista3.add(77);
-        System.out.println(lista3.showData());
+
+        ListaCircularSimple lista5 = new ListaCircularSimple();
+        lista5.add(88);
+        lista5.add(99);
+        lista5.add(101);
         
+        lista5.join(lista3);
+        //comprobar la union de listas
+        System.out.println(lista5.showData());
+        
+        
+        
+        System.out.println(lista3.showData());
+
         ListaDoble lista2 = new ListaDoble();
         lista2.addLast(55);
         lista2.addLast(66);
@@ -56,8 +68,10 @@ public class Listas {
 //        ArrayList<Integer> edades = new ArrayList<>();
 //        ArrayList<Double> notas = new ArrayList<>();
 //        ArrayList<Node> misNodos = new ArrayList<>();
-//        miLista listica = new miLista();
-//       listica.add(55);
+        miLista listica = new miLista();
+        listica.add(55);
+        listica.addOrdered(88);
+
 //       listica.add(66);
 //       listica.add(77);
 //       listica.add(88);
