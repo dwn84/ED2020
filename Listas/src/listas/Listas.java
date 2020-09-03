@@ -19,6 +19,24 @@ public class Listas {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        ArrayStack<Integer> pilaArreglo = new ArrayStack<>(3);
+        pilaArreglo.push(11);
+        pilaArreglo.push(22);
+        pilaArreglo.push(33);
+        try {
+            System.out.println("Antes de hacer pop");
+            System.out.println(pilaArreglo.peek());
+            pilaArreglo.pop();
+            pilaArreglo.pop();
+            pilaArreglo.pop();
+            pilaArreglo.pop();
+            System.out.println("Despues de hacer pop");
+            System.out.println(pilaArreglo.peek());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("");
         ListaCircularDoble lista4 = new ListaCircularDoble();
         lista4.add(55);
         lista4.add(66);
@@ -36,13 +54,11 @@ public class Listas {
         lista5.add(88);
         lista5.add(99);
         lista5.add(101);
-        
+
         lista5.join(lista3);
         //comprobar la union de listas
         System.out.println(lista5.showData());
-        
-        
-        
+
         System.out.println(lista3.showData());
 
         ListaDoble lista2 = new ListaDoble();
