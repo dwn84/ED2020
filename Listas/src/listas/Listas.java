@@ -17,7 +17,32 @@ public class Listas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        System.out.println("Validar parentesis");
+        System.out.println(validarBalanceParentesis("(()(()())())"));
+        
+        
         // TODO code application logic here
+        LinkedStack<Double> pilaEnlazada = new LinkedStack<>();
+        pilaEnlazada.push(3.3);
+        pilaEnlazada.push(4.4);
+        pilaEnlazada.push(5.5);
+        pilaEnlazada.push(6.6);
+        try {
+            System.out.println("Mostrar el siguiente en salir:" + pilaEnlazada.peek());
+            pilaEnlazada.pop();
+            pilaEnlazada.pop();
+            pilaEnlazada.pop();
+            pilaEnlazada.pop();
+            pilaEnlazada.pop();
+            pilaEnlazada.pop();
+            pilaEnlazada.pop();
+            pilaEnlazada.pop();
+            System.out.println("Mostrar el siguiente en salir:" + pilaEnlazada.peek());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         ArrayStack<Integer> pilaArreglo = new ArrayStack<>(3);
         pilaArreglo.push(11);
@@ -43,8 +68,12 @@ public class Listas {
         lista4.add(77);
         lista4.add(88);
         lista4.add(99);
-
         System.out.println("");
+        lista4.deleteLast();
+        System.out.println("");
+
+        System.out.println("Listado circular doble: " + lista4.showDataAsc());
+        System.out.println("--------------");
         ListaCircularSimple lista3 = new ListaCircularSimple();
         lista3.add(55);
         lista3.add(66);
@@ -54,12 +83,14 @@ public class Listas {
         lista5.add(88);
         lista5.add(99);
         lista5.add(101);
-
+        //lista 3
+        System.out.println(lista3.showData());
+        //lista 5
+        System.out.println(lista5.showData());
+        System.out.println("Union de listas");
         lista5.join(lista3);
         //comprobar la union de listas
         System.out.println(lista5.showData());
-
-        System.out.println(lista3.showData());
 
         ListaDoble lista2 = new ListaDoble();
         lista2.addLast(55);
@@ -85,9 +116,19 @@ public class Listas {
 //        ArrayList<Double> notas = new ArrayList<>();
 //        ArrayList<Node> misNodos = new ArrayList<>();
         miLista listica = new miLista();
-        listica.add(55);
-        listica.addOrdered(88);
-
+        listica.addLast(44);
+        listica.addLast(55);
+        listica.addLast(66);
+        listica.addLast(77);
+        listica.addLast(99);
+//        listica.add(55);
+//        listica.add(33);
+//        listica.addOrdered(11);
+//        listica.delete();
+//        listica.addOrdered(88);
+        System.out.println("Datos de lista simple: " + listica.showData());
+        System.out.println("total de datos:" + listica.TotalDatos());
+        System.out.println("Valor minimo:" + listica.Menor());
 //       listica.add(66);
 //       listica.add(77);
 //       listica.add(88);
@@ -117,4 +158,29 @@ public class Listas {
 //        System.out.println(listica.showData());
     }
 
+    public static boolean validarBalanceParentesis(String expresion) {
+        LinkedStack<String> parentesis = new LinkedStack<>();
+        char[] expresionEnArreglo = expresion.toCharArray();
+        for (int i = 0; i < expresionEnArreglo.length; i++) {
+            if(expresionEnArreglo[i]=='('){
+                parentesis.push("(");
+            }else if (expresionEnArreglo[i]==')'){
+                if(parentesis.empty()){
+                    return false;
+                }else{
+                    try {
+                        parentesis.pop();
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    
+                }
+            
+            }
+            
+        }
+        
+        return parentesis.empty();
+        
+    }
 }

@@ -69,7 +69,9 @@ public class ListaCircularSimple {
     
     public void join(ListaCircularSimple otherList){
         //a la cola la enlazo con la cabeza de la otra lista
+        tail.setNextNode(otherList.head);
         //a la cola de la otra otra lista la enlazo con mi cabeza
+        otherList.tail.setNextNode(head);
     }
     
 }

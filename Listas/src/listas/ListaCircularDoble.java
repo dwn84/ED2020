@@ -47,7 +47,12 @@ public class ListaCircularDoble {
      * ELiminar el último nodo
      */
     public void deleteLast(){
-        //modificar el anterior de la cabeza
+        //modificar el anterior de la cabeza para que sea el ultimo
+        //el ultimo es: head.getPreviosNode();
+        head.setPreviosNode(head.getPreviosNode());
+        //al anterior al ultimo, cambiar el siguiente para que sea la cabeza
+        head.getPreviosNode().getPreviosNode().setNextNode(head);
+        
     }
     
     /**
@@ -64,5 +69,22 @@ public class ListaCircularDoble {
      */
     public String showDataDesc() {
         return "";
+    }
+    
+     /**
+     * Mostrar los datos de la lista desde el primero al último
+     * @return 
+     */
+    public String showDataAsc() {        
+        DoubleNode actual = head;
+        DoubleNode ultimo = actual.getPreviosNode();
+        String Data = "";
+        while(actual!=ultimo){
+            System.out.println(actual.getData());
+            Data += actual.getData();
+            actual = actual.getNextNode();
+        }
+        
+        return Data;
     }
 }
