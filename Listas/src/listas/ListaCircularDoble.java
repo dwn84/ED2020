@@ -19,6 +19,7 @@ public class ListaCircularDoble {
 
     private boolean isEmpty() {
         return head == null;
+        
     }
 
     /**
@@ -40,6 +41,25 @@ public class ListaCircularDoble {
             head.getPreviosNode().setNextNode(newNode);
             head.setPreviosNode(newNode);            
             head = newNode;
+        }
+    }
+    
+    public void addOrdered(int d){
+        if(isEmpty()||d<head.getData()){
+            add(d);
+        }else if(d>head.getPreviosNode().getData()){        
+            DoubleNode newNode = new DoubleNode(head.getPreviosNode(),d,head);
+            head.getPreviosNode().setNextNode(newNode);
+            head.setPreviosNode(newNode);
+        }else{
+            DoubleNode actual = head.getNextNode();
+            while(actual.getData()<d){
+                actual=actual.getNextNode();
+            }
+            DoubleNode nuevoNodo = new DoubleNode(actual.getPreviosNode(), d, actual);
+            actual.getPreviosNode().setNextNode(nuevoNodo);
+            actual.setPreviosNode(nuevoNodo);
+            
         }
     }
     
@@ -68,7 +88,15 @@ public class ListaCircularDoble {
      * @return 
      */
     public String showDataDesc() {
-        return "";
+        DoubleNode referente = head.getPreviosNode();
+        String datos = "";
+        datos += referente.getData() + " - ";
+        while(referente!=head){
+            
+            referente = referente.getPreviosNode();
+            datos += referente.getData()+ " - ";
+        }        
+        return datos;
     }
     
      /**
@@ -79,10 +107,10 @@ public class ListaCircularDoble {
         DoubleNode actual = head;
         DoubleNode ultimo = actual.getPreviosNode();
         String Data = "";
+        Data += head.getData() + " - ";
         while(actual!=ultimo){
-            System.out.println(actual.getData());
-            Data += actual.getData();
             actual = actual.getNextNode();
+            Data += actual.getData() + " - ";            
         }
         
         return Data;

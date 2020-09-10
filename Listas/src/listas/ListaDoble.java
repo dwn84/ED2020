@@ -71,7 +71,9 @@ public class ListaDoble {
      */
 
     public void deleteLast(){
-        //modificar la cola
+        //modificar la cola: asignar el penultimo a la cola
+        tail = tail.getPreviosNode();
+        tail.setNextNode(null);
     }
     
     /**

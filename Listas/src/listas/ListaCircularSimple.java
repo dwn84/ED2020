@@ -54,6 +54,10 @@ public class ListaCircularSimple {
         return data;
     }
     
+    
+    
+    
+    
     /**
      * Eliminar el primer nodo
      */
@@ -67,11 +71,11 @@ public class ListaCircularSimple {
      * Unir lista circular simple
      */
     
-    public void join(ListaCircularSimple otherList){
+    public void unir(ListaCircularSimple otraLista){
         //a la cola la enlazo con la cabeza de la otra lista
-        tail.setNextNode(otherList.head);
+        tail.setNextNode(otraLista.head);
         //a la cola de la otra otra lista la enlazo con mi cabeza
-        otherList.tail.setNextNode(head);
+        otraLista.tail.setNextNode(head);
     }
     
 }
