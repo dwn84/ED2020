@@ -42,5 +42,7 @@ public class ColaEnlazada {
         }
 
     }
+    
+    //Implementar método element y peek
 
 }
