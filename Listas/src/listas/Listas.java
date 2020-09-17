@@ -17,20 +17,25 @@ public class Listas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Validar expresion matemática: "+validarExpresionMatematica("{[(5+7)/3]-66}"));//resultado: verdadero
-        System.out.println("Validar expresion matemática: "+validarExpresionMatematica("{([5+7]/3)-66"));//resultado: falso
+
+        //ejemplos de recursividad
+        Recursividad ejemploR = new Recursividad();
+        System.out.println("Ejemplo de sumatoria: " + ejemploR.sumatoria(5));
+       
         
+        System.out.println("Validar expresion matemática: " + validarExpresionMatematica("{[(5+7)/3]-66}"));//resultado: verdadero
+        System.out.println("Validar expresion matemática: " + validarExpresionMatematica("{([5+7]/3)-66"));//resultado: falso
+
         try {
-            System.out.println("Conversión numérica: "+convertirBasesNumericas(14,8));//resultado: 16
-            System.out.println("Conversión numérica: "+convertirBasesNumericas(14,7));//mostrar el error
-            System.out.println("Conversión numérica: "+convertirBasesNumericas(14,16));//E
-            System.out.println("Conversión numérica: "+convertirBasesNumericas(14,2));//1110
-            
+            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 8));//resultado: 16
+            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 7));//mostrar el error
+            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 16));//E
+            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 2));//1110
+
         } catch (Exception e) {
             System.out.println("Eror:" + e.getMessage());
         }
-        
-        
+
         ColaEnlazada atencionCiudadana = new ColaEnlazada();
         atencionCiudadana.agregar(11);
         atencionCiudadana.agregar(22);
@@ -43,7 +48,7 @@ public class Listas {
         System.out.println("");
         String conversion = convetirDecimalBinario(100);
         System.out.println("Conversion de decimal a binario: " + conversion);
-        
+
 //        int a = 4, b = 8;
         //condicional en cortocircuito
         //https://es.wikipedia.org/wiki/Evaluaci%C3%B3n_de_cortocircuito
@@ -53,7 +58,6 @@ public class Listas {
 //        if (a > 0 | b > 0) {
 //
 //        }
-
 //        System.out.println("Validar parentesis");
 //        System.out.println(validarBalanceParentesis("(()(()())())"));
 //        
@@ -203,26 +207,25 @@ public class Listas {
 ////        System.out.println(listica.showData());
     }
 
-    public static String convetirDecimalBinario(int n){
+    public static String convetirDecimalBinario(int n) {
         LinkedStack<Integer> residuos = new LinkedStack<>();
-        String binario ="";
-        while(n>0){
-            residuos.push(n%2);
-            n/=2;
+        String binario = "";
+        while (n > 0) {
+            residuos.push(n % 2);
+            n /= 2;
         }
-        while(!residuos.empty()){
+        while (!residuos.empty()) {
             try {
                 binario += residuos.pop();
             } catch (Exception e) {
                 System.out.println("Error interno");
             }
-            
+
         }
         return binario;
-        
-        
+
     }
-    
+
     public static boolean validarBalanceParentesis(String expresion) {
         LinkedStack<String> parentesis = new LinkedStack<>();
         char[] expresionEnArreglo = expresion.toCharArray();
@@ -248,29 +251,33 @@ public class Listas {
         return parentesis.empty();
 
     }
-    
+
     /**
-     * Verificar si una expresión matemática que utilice llaves, 
-     * corchetes y paréntesis se encuentra balanceada
+     * Verificar si una expresión matemática que utilice llaves, corchetes y
+     * paréntesis se encuentra balanceada
+     *
      * @param expresion Expresion matemática
      * @return Verdadero si esta balanceada, falso si no esta balanceada
-     * Expresión balanceada: {[(5+7)/3]-66}
-     * Expresión No balanceada: {([5+7]/3)-66
+     * Expresión balanceada: {[(5+7)/3]-66} Expresión No balanceada:
+     * {([5+7]/3)-66
      */
-    public static boolean validarExpresionMatematica(String expresion){
-    //Usar pilas para almacenar información...
+    public static boolean validarExpresionMatematica(String expresion) {
+        //Usar pilas para almacenar información...
         return true;
     }
-    
-    public static int convertirBasesNumericas(int n, int base)throws Exception{
+
+    public static int convertirBasesNumericas(int n, int base) throws Exception {
         /*
             if(base no es correcta){
                 throw new IllegalArgumentException("La base no válida");
             }else{
                 realizar conversión
             }
-        */
+         */
         return 0;
 
     }
+
+
+
 }
