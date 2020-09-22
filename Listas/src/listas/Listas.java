@@ -21,6 +21,11 @@ public class Listas {
         //ejemplos de recursividad
         Recursividad ejemploR = new Recursividad();
         System.out.println("Ejemplo de sumatoria: " + ejemploR.sumatoria(5));
+        System.out.println("Ejemplo de factorial: " + ejemploR.factorial(6));
+        System.out.println("Ejemplo de serie fibonacci: " + ejemploR.fibonacci(9));
+        System.out.print("Ejemplo de datos de la serie de F: ");
+        ejemploR.serieFibonacci(9);
+                
        
         
         System.out.println("Validar expresion matemática: " + validarExpresionMatematica("{[(5+7)/3]-66}"));//resultado: verdadero
