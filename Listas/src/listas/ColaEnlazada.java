@@ -35,14 +35,29 @@ public class ColaEnlazada {
     public void remover() {
         if (estaVacia()) {
             System.out.println("Cola sin datos");
-        }else if (cabeza==ultimo){
+        } else if (cabeza == ultimo) {
             cabeza = ultimo = null;
-        }else{
-            cabeza= cabeza.getNextNode();
+        } else {
+            cabeza = cabeza.getNextNode();
         }
 
     }
-    
+
     //Implementar método element y peek
+    public int element() throws Exception {
+        if (estaVacia()) {
+            throw new Exception("Cola vacia");
+        } else {
+            return cabeza.getData();
+        }
+    }
+    
+    public Object peek(){
+        if (estaVacia()) {
+            return null;
+        } else {
+            return cabeza.getData();
+        }
+    }
 
 }

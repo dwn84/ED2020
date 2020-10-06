@@ -38,8 +38,7 @@ public class ListaDoble {
     }
 
     /**
-     * Método para agregar datos al final 
-     * Se modifica la cola de la estructura
+     * Método para agregar datos al final Se modifica la cola de la estructura
      * el penúltimo nodo tendrá un nuevo nodo siguiente = cola
      *
      * @param data el dato al interior del nodo
@@ -47,46 +46,70 @@ public class ListaDoble {
     public void addLast(int data) {
         if (isEmpty()) {
             head = tail = new DoubleNode(null, data, null);
-        }else{
+        } else {
             tail = new DoubleNode(tail, data, null);
             tail.getPreviosNode().setNextNode(tail);
         }
-            
+
     }
+
     /**
      * Eliminar el primer elemento de la lista
      */
-    public void delete(){
-        
-        if(isEmpty()){
+    public void delete() {
+
+        if (isEmpty()) {
             System.out.println("No existen datos a borrar");
-        }else{
+        } else {
             head = head.getNextNode();
             head.getNextNode().setPreviosNode(null);
         }
     }
-    
+
     /**
      * Borrar el último nodo
      */
-
-    public void deleteLast(){
+    public void deleteLast() {
         //modificar la cola: asignar el penultimo a la cola
         tail = tail.getPreviosNode();
         tail.setNextNode(null);
     }
-    
+
+    public boolean deleteDuplicate() {
+
+        boolean borrado = false;
+        DoubleNode current = head;
+        while (current.getNextNode() != null) {
+            DoubleNode innerCurrent = current.getNextNode();
+            while (innerCurrent != null) {
+                //comparar nodo actual con nodo interno y realizar movimientos
+                if (current.getData() == innerCurrent.getData()) {
+                    if (innerCurrent.getNextNode() == null) {
+                        innerCurrent.getPreviosNode().setNextNode(null);
+                    } else {
+                        innerCurrent.getPreviosNode().setNextNode(innerCurrent.getNextNode());
+                        innerCurrent.getNextNode().setPreviosNode(innerCurrent.getPreviosNode());
+                    }
+                    borrado = true;
+                }
+                 innerCurrent = innerCurrent.getNextNode();
+            }
+            current = current.getNextNode();
+        }
+        return borrado;
+    }
+
     /**
      * Buscar un dato
      */
-    
-    public boolean search(int d){
+    public boolean search(int d) {
         //recorrer y comparar
         return true;
     }
+
     /**
-     * Método para mostrar los datos ascendentemente 
-     * Inicia desde la cabeza hasta el final
+     * Método para mostrar los datos ascendentemente Inicia desde la cabeza
+     * hasta el final
      *
      * @return Datos de la lista
      */
@@ -104,14 +127,12 @@ public class ListaDoble {
         return data;
     }
 
-    
     /**
-     * Método para mostrar los datos descendentemente 
-     * Inicia desde la cola hasta el inicio
+     * Método para mostrar los datos descendentemente Inicia desde la cola hasta
+     * el inicio
      *
      * @return Datos de la lista
      */
-    
     public String showDataDesc() {
         String data = "";
         if (isEmpty()) {

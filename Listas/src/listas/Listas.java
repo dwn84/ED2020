@@ -18,6 +18,33 @@ public class Listas {
      */
     public static void main(String[] args) {
 
+        ListaDoble quiz = new ListaDoble();
+        quiz.add(11);
+        quiz.add(22);
+        quiz.add(33);
+        quiz.add(11);
+        quiz.add(22);
+        quiz.add(44);
+        System.out.println("Datos del quiz: " +quiz.showData());
+        quiz.deleteDuplicate();
+        System.out.println("Datos del quiz: " +quiz.showData());
+        
+        PilaDoble tronex =  new PilaDoble(6);
+        tronex.agregarDatoPila1(77);
+        tronex.agregarDatoPila1(88);
+        tronex.agregarDatoPila2(11);
+        tronex.agregarDatoPila2(22);
+        tronex.agregarDatoPila2(33);
+        tronex.agregarDatoPila2(44);
+        tronex.agregarDatoPila2(55);
+        System.out.println("");
+        
+        try {
+            System.out.println("Conversion numéria:" + convertirBasesNumericas(101, 7));
+        } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
+        }
+
         //ejemplos de recursividad
         Recursividad ejemploR = new Recursividad();
         System.out.println("Ejemplo de sumatoria: " + ejemploR.sumatoria(5));
@@ -25,20 +52,18 @@ public class Listas {
         System.out.println("Ejemplo de serie fibonacci: " + ejemploR.fibonacci(9));
         System.out.print("Ejemplo de datos de la serie de F: ");
         ejemploR.serieFibonacci(9);
-                
-       
-        
-        System.out.println("Validar expresion matemática: " + validarExpresionMatematica("{[(5+7)/3]-66}"));//resultado: verdadero
-        System.out.println("Validar expresion matemática: " + validarExpresionMatematica("{([5+7]/3)-66"));//resultado: falso
+
+        //System.out.println("\nValidar expresion matemática 1: " + validarExpresionMatematica("{[(5+7)/3]-66}"));//resultado: verdadero
+        System.out.println("Validar expresion matemática 2 : " + validarExpresionMatematica("{[(5+7)/3]-66}"));//resultado: falso
 
         try {
-            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 8));//resultado: 16
-            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 7));//mostrar el error
-            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 16));//E
-            System.out.println("Conversión numérica: " + convertirBasesNumericas(14, 2));//1110
+            System.out.println("Conversión numérica 1: " + convertirBasesNumericas(14, 8));//resultado: 16
+            //System.out.println("Conversión numérica 2: " + convertirBasesNumericas(14, 7));//mostrar el error
+            System.out.println("Conversión numérica 3: " + convertirBasesNumericas(171, 16));//E
+            System.out.println("Conversión numérica 4: " + convertirBasesNumericas(14, 2));//1110
 
         } catch (Exception e) {
-            System.out.println("Eror:" + e.getMessage());
+            System.out.println("Error:" + e.getMessage());
         }
 
         ColaEnlazada atencionCiudadana = new ColaEnlazada();
@@ -268,21 +293,122 @@ public class Listas {
      */
     public static boolean validarExpresionMatematica(String expresion) {
         //Usar pilas para almacenar información...
-        return true;
+        LinkedStack<String> parentesis = new LinkedStack<>();
+        boolean llaveB = false, corcheteB = false, parentesisB = false;
+        char[] expresionEnArreglo = expresion.toCharArray();
+        for (int i = 0; i < expresionEnArreglo.length; i++) {
+            System.out.println("");
+//({[5+7]/3)-66}
+            if (expresionEnArreglo[i] == '{' && !corcheteB && !parentesisB) {
+                if (!llaveB) {
+                    llaveB = true;
+                    parentesis.push("{");
+
+                } else {
+                    return false;
+                }
+
+            } else if (expresionEnArreglo[i] == '[' && !llaveB && !parentesisB) {
+                if (!corcheteB) {
+                    corcheteB = true;
+                    parentesis.push("[");
+                } else {
+                    return false;
+                }
+            } else if (expresionEnArreglo[i] == '(' && !corcheteB && !llaveB) {
+                if (!parentesisB) {
+                    parentesisB = true;
+                    parentesis.push("(");
+                } else {
+                    return false;
+                }
+
+            } else if (expresionEnArreglo[i] == ')') {
+                try {
+                    parentesis.pop();
+                    parentesisB = false;
+                } catch (Exception e) {
+                    return false;
+                }
+
+            } else if (expresionEnArreglo[i] == ']') {
+                try {
+                    parentesis.pop();
+                    corcheteB = false;
+                } catch (Exception e) {
+                    return false;
+                }
+            } else if (expresionEnArreglo[i] == '}') {
+                try {
+                    parentesis.pop();
+                    llaveB = false;
+                } catch (Exception e) {
+                    return false;
+                }
+            }
+
+        }
+
+        return parentesis.empty();
     }
 
-    public static int convertirBasesNumericas(int n, int base) throws Exception {
-        /*
+    public static String convertirBasesNumericas(int n, int base) throws Exception {
+        if (base != 2 && base != 8 && base != 16) {
+            throw new IllegalArgumentException("La base no es válida");
+        } else {
+            LinkedStack<Integer> residuos = new LinkedStack<>();
+            String resultado = "";
+            while (n > 0) {
+                residuos.push(n % base);
+                n /= base;
+            }
+            while (!residuos.empty()) {
+                try {
+                    Object temp;
+                    if (base == 16) {
+                        temp = residuos.pop();
+                        switch (temp.toString()) {
+                            case "10":
+                                resultado += "A";
+                                break;
+                            case "11":
+                                resultado += "B";
+                                break;
+                            case "12":
+                                resultado += "C";
+                                break;
+                            case "13":
+                                resultado += "D";
+                                break;
+                            case "14":
+                                resultado += "E";
+                                break;
+                            case "15":
+                                resultado += "F";
+                                break;
+                            default:
+                                resultado += temp;
+                        }
+
+                    } else {
+                        resultado += residuos.pop();
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Error interno");
+                }
+
+            }
+            return resultado;
+
+            /*
             if(base no es correcta){
                 throw new IllegalArgumentException("La base no válida");
             }else{
                 realizar conversión
             }
-         */
-        return 0;
-
+             */
+        }
     }
-
-
 
 }
