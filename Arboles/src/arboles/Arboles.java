@@ -16,12 +16,21 @@ public class Arboles {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ArbolBinario navidad = new ArbolBinario(11);
-        navidad.getRaiz().setDerecha(new NodoBinario((22)));
-        navidad.getRaiz().setIzquierda(new NodoBinario((33)));
-        navidad.getRaiz().getDerecha().setIzquierda(new NodoBinario((44)));
-        navidad.getRaiz().getDerecha().setDerecha(new NodoBinario((55)));
+        ArbolBinario navidad = new ArbolBinario();
+//        navidad.getRaiz().setDerecha(new NodoBinario((55)));
+//        navidad.getRaiz().setIzquierda(new NodoBinario((11)));
+//        navidad.getRaiz().getDerecha().setIzquierda(new NodoBinario((44)));
+//        navidad.getRaiz().getDerecha().setDerecha(new NodoBinario((22)));
+        navidad.AgregarDato(33);
+        navidad.AgregarDato(12);
+        navidad.AgregarDato(5);
+        navidad.AgregarDato(44);
+        navidad.AgregarDato(7);
+                
+        String resultado = (navidad.Buscar(7)==null)?"NO lo encontro":"Dato encontrado";
+        System.out.println(resultado);
         System.out.println("Verificar hoja: "+ navidad.getRaiz().getDerecha().verificarHoja());
     }
     
 }
+
