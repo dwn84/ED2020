@@ -15,9 +15,11 @@ public class ArbolBinario {
     private NodoBinario raiz;
     private int nodos;
     private boolean posicion;
+    private NodoBinario padre;
 
     public ArbolBinario() {
         raiz = null;
+        padre = null;
         nodos = 0;
     }
 
@@ -81,7 +83,11 @@ public class ArbolBinario {
             return null;
         } else if (dato == nodoActual.getDato()) {
             return nodoActual;
-        } else if (dato > nodoActual.getDato()) {
+        }
+
+        padre = nodoActual;
+
+        if (dato > nodoActual.getDato()) {
             posicion = true;
             return BuscarRecursivamente(dato, nodoActual.getDerecha());
         } else {
@@ -112,8 +118,38 @@ public class ArbolBinario {
             }
         } else if (nodoActual.getDerecha() == null) {
             nodoActual.setDerecha(new NodoBinario((dato)));
-        }else{
-            AgregarDatoRecursivamente(dato,nodoActual.getDerecha());
+        } else {
+            AgregarDatoRecursivamente(dato, nodoActual.getDerecha());
         }
+    }
+    
+    public void Borrar(int data){
+        if(raiz == null){
+            System.out.println("Árbol vacio");
+        }
+        else{
+            BorrarR(data,raiz);
+        }    
+    }
+    
+    private void BorrarR(int data, NodoBinario actual){
+    
+        NodoBinario v = Buscar(data);
+        
+        if(v.verificarHoja()){
+            if(posicion){
+                padre.setDerecha(null);
+            }else{
+                padre.setIzquierda(null);
+            }
+        }
+    }
+    
+
+    /**
+     * @return the padre
+     */
+    public NodoBinario getPadre() {
+        return padre;
     }
 }

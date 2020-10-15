@@ -29,7 +29,13 @@ public class Arboles {
                 
         String resultado = (navidad.Buscar(7)==null)?"NO lo encontro":"Dato encontrado";
         System.out.println(resultado);
+        //validar el padre de un nodo buscado
+        System.out.println("El padre del nodo buscado: " +navidad.getPadre().getDato());
         System.out.println("Verificar hoja: "+ navidad.getRaiz().getDerecha().verificarHoja());
+        
+        navidad.Borrar(7);
+        resultado = (navidad.Buscar(7)==null)?"NO lo encontro":"Dato encontrado";
+        System.out.println(resultado);
     }
     
 }
