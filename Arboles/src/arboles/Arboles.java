@@ -26,15 +26,17 @@ public class Arboles {
         navidad.AgregarDato(5);
         navidad.AgregarDato(44);
         navidad.AgregarDato(7);
+        navidad.AgregarDato(14);
+        navidad.AgregarDato(13);
+        navidad.AgregarDato(15);
                 
-        String resultado = (navidad.Buscar(7)==null)?"NO lo encontro":"Dato encontrado";
+        String resultado = (navidad.Buscar(33)==null)?"NO lo encontro":"Dato encontrado";
         System.out.println(resultado);
         //validar el padre de un nodo buscado
         System.out.println("El padre del nodo buscado: " +navidad.getPadre().getDato());
-        System.out.println("Verificar hoja: "+ navidad.getRaiz().getDerecha().verificarHoja());
         
-        navidad.Borrar(7);
-        resultado = (navidad.Buscar(7)==null)?"NO lo encontro":"Dato encontrado";
+        navidad.Borrar(33);
+        resultado = (navidad.Buscar(33)==null)?"NO lo encontro":"Dato encontrado";
         System.out.println(resultado);
     }
     

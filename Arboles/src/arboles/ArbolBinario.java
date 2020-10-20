@@ -142,7 +142,36 @@ public class ArbolBinario {
             }else{
                 padre.setIzquierda(null);
             }
+        }else if(v.verificarUnSoloHijo()){
+            if(v.isDesplazarIzquierda()){
+                if(!posicion){
+                    padre.setIzquierda(v.getIzquierda());                
+                }else{
+                    padre.setDerecha(v.getIzquierda());
+                }
+                
+            }else{
+                if(!posicion){
+                    padre.setIzquierda(v.getDerecha());
+                }else{
+                    padre.setDerecha(v.getDerecha());
+                }            
+            }
+        }else{
+            //buscar sucesor: ubicarse en el subarbol izquierdo y encontrar el menor
+            NodoBinario menor = obtenerMenor(v.getDerecha());
+            Borrar(menor.getDato());
+            v.setDato(menor.getDato());
         }
+    }
+    
+    private NodoBinario obtenerMenor(NodoBinario actual){    
+        if(actual.getIzquierda()==null){
+            return actual;
+        }else{
+            return obtenerMenor(actual.getIzquierda());
+        }
+        
     }
     
 

@@ -93,5 +93,12 @@ public class NodoBinario {
     public void setIzquierda(NodoBinario izquierda) {
         this.izquierda = izquierda;
     }
+
+    /**
+     * @return the desplazarIzquierda
+     */
+    public boolean isDesplazarIzquierda() {
+        return desplazarIzquierda;
+    }
    
 }
