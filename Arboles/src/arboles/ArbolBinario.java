@@ -122,58 +122,54 @@ public class ArbolBinario {
             AgregarDatoRecursivamente(dato, nodoActual.getDerecha());
         }
     }
-    
-    public void Borrar(int data){
-        if(raiz == null){
+
+    public void Borrar(int data) {
+        if (raiz == null) {
             System.out.println("Árbol vacio");
+        } else {
+            BorrarR(data, raiz);
         }
-        else{
-            BorrarR(data,raiz);
-        }    
     }
-    
-    private void BorrarR(int data, NodoBinario actual){
-    
+
+    private void BorrarR(int data, NodoBinario actual) {
+
         NodoBinario v = Buscar(data);
-        
-        if(v.verificarHoja()){
-            if(posicion){
+
+        if (v.verificarHoja()) {
+            if (posicion) {
                 padre.setDerecha(null);
-            }else{
+            } else {
                 padre.setIzquierda(null);
             }
-        }else if(v.verificarUnSoloHijo()){
-            if(v.isDesplazarIzquierda()){
-                if(!posicion){
-                    padre.setIzquierda(v.getIzquierda());                
-                }else{
+        } else if (v.verificarUnSoloHijo()) {
+            if (v.isDesplazarIzquierda()) {
+                if (!posicion) {
+                    padre.setIzquierda(v.getIzquierda());
+                } else {
                     padre.setDerecha(v.getIzquierda());
                 }
-                
-            }else{
-                if(!posicion){
-                    padre.setIzquierda(v.getDerecha());
-                }else{
-                    padre.setDerecha(v.getDerecha());
-                }            
+
+            } else if (!posicion) {
+                padre.setIzquierda(v.getDerecha());
+            } else {
+                padre.setDerecha(v.getDerecha());
             }
-        }else{
+        } else {
             //buscar sucesor: ubicarse en el subarbol izquierdo y encontrar el menor
             NodoBinario menor = obtenerMenor(v.getDerecha());
             Borrar(menor.getDato());
             v.setDato(menor.getDato());
         }
     }
-    
-    private NodoBinario obtenerMenor(NodoBinario actual){    
-        if(actual.getIzquierda()==null){
+
+    private NodoBinario obtenerMenor(NodoBinario actual) {
+        if (actual.getIzquierda() == null) {
             return actual;
-        }else{
+        } else {
             return obtenerMenor(actual.getIzquierda());
         }
-        
+
     }
-    
 
     /**
      * @return the padre
@@ -181,4 +177,42 @@ public class ArbolBinario {
     public NodoBinario getPadre() {
         return padre;
     }
+
+    public void InOrden() {
+        InOrden(raiz);
+    }
+
+    private void InOrden(NodoBinario referente) {
+        if (referente != null) {
+            InOrden(referente.getIzquierda());
+            System.out.print(referente.getDato() + " ");
+            InOrden(referente.getDerecha());
+        }
+
+    }
+
+    public void PostOrden() {
+        PostOrden(raiz);
+    }
+
+    private void PostOrden(NodoBinario referente) {
+        if (referente != null) {
+            PostOrden(referente.getIzquierda());
+            PostOrden(referente.getDerecha());
+            System.out.print(referente.getDato() + " ");
+        }
+    }
+
+    public void PreOrden() {
+        PreOrden(raiz);
+    }
+
+    private void PreOrden(NodoBinario referente) {
+        if (referente != null) {
+            System.out.print(referente.getDato() + " ");
+            PreOrden(referente.getIzquierda());
+            PreOrden(referente.getDerecha());
+        }
+    }
+
 }

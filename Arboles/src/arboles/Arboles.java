@@ -30,6 +30,12 @@ public class Arboles {
         navidad.AgregarDato(13);
         navidad.AgregarDato(15);
                 
+        System.out.println("Datos del arbol en InOrden");
+        navidad.InOrden();
+        System.out.println("Datos del arbol en PostOrden");
+        navidad.PostOrden();
+        System.out.println("Datos del arbol en PreOrden");
+        navidad.PreOrden();
         String resultado = (navidad.Buscar(33)==null)?"NO lo encontro":"Dato encontrado";
         System.out.println(resultado);
         //validar el padre de un nodo buscado
