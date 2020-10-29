@@ -104,4 +104,18 @@ public class GrafoN {
 
     }
 
+    public void recorridoProfundidad(int origen) {
+        boolean visitados[] = new boolean[MatrizAdyacencia.length];
+        recorridoProfundidad(origen, visitados);
+    }
+
+    private void recorridoProfundidad(int origen, boolean visitados[]) {
+        visitados[origen] = true;
+        System.out.print(origen + " ");
+        for (Integer vecino : ListaAdyacencia[origen]) {
+            if (!visitados[vecino]) {
+                recorridoProfundidad(vecino, visitados);
+            }
+        }
+    }
 }
