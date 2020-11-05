@@ -6,6 +6,7 @@
 package grafos;
 
 import java.util.HashMap;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -41,7 +42,8 @@ public class Grafos {
         System.out.println("");
         
         //Ejemplo de mapa en Java: equivalente a diccionario en python/C# o arreglo asociativo en PHP
-        
+        double x= Double.MAX_VALUE;
+        System.out.println(x);
         HashMap<String,Integer>  mapa = new HashMap<>();
         mapa.put("A",111);
         mapa.put("B",222);
@@ -60,6 +62,15 @@ public class Grafos {
         
             System.out.println(llave + ": "+ mapa.get(llave));
         }
+        
+        PriorityQueue<Integer> cp = new PriorityQueue<>();
+        cp.add(77);
+        cp.add(88);
+        cp.add(66);
+        cp.add(55);
+        cp.add(60);
+        cp.remove();
+        System.out.println(cp);
     }
 
 }
