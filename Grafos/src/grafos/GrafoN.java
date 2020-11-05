@@ -118,4 +118,13 @@ public class GrafoN {
             }
         }
     }
+    /**
+     * Primer punto del taller de grafos.
+     * @return Verdadero si todos los nodos tienen la misma cantidad
+     * de entradas y salidas
+     */
+    public boolean validarEntradasSalidas(){
+        //TODO
+        return true;
+    }
 }
