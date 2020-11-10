@@ -19,6 +19,28 @@ public class Grafos {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        GrafoDinamico SuperGrafo = new GrafoDinamico();
+        SuperGrafo.agregarNodo("A");
+        SuperGrafo.agregarNodo("B");
+        SuperGrafo.agregarNodo("C");
+        SuperGrafo.agregarNodo("D");
+        SuperGrafo.agregarArco("A", "B", 2);
+        SuperGrafo.agregarArco("B", "A", 2);
+        SuperGrafo.agregarArco("B", "C", 2);
+        SuperGrafo.agregarArco("B", "D", 5);
+        SuperGrafo.agregarArco("A", "C", 5);
+        SuperGrafo.agregarArco("C", "A", 5);
+        SuperGrafo.agregarArco("C", "B", 2);
+        SuperGrafo.agregarArco("C", "D", 1);
+        SuperGrafo.agregarArco("D", "B", 5);
+        SuperGrafo.agregarArco("D", "C", 1);
+        System.out.println("Lista de adyacencia del grafo");
+        System.out.println(SuperGrafo.mostrarListaAdyacencia());
+        
+                
+        
+        
         //Prueba 1 de taller grafo
         GrafoN miniGrafo = new GrafoN(6);
         miniGrafo.agregarArco(0, 1);
@@ -50,7 +72,7 @@ public class Grafos {
         System.out.println("");
 
         //Ejemplo de mapa en Java: equivalente a diccionario en python/C# o arreglo asociativo en PHP
-        double x = Double.MAX_VALUE;
+        /*double x = Double.MAX_VALUE;
         System.out.println(x);
         HashMap<String, Integer> mapa = new HashMap<>();
         mapa.put("A", 111);
@@ -77,6 +99,11 @@ public class Grafos {
         cp.add(60);
         cp.remove();
         System.out.println(cp);
+        
+        PriorityQueue<NodoPeso> colaPriorizada = new PriorityQueue<>();
+        colaPriorizada.add(new NodoPeso("B", 4));
+        colaPriorizada.add(new NodoPeso("C", 2));
+*/
     }
 
 }
