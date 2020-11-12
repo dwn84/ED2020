@@ -38,6 +38,13 @@ public class Grafos {
         System.out.println("Lista de adyacencia del grafo");
         System.out.println(SuperGrafo.mostrarListaAdyacencia());
         
+        HashMap<String, NodoPeso> mapaRecorrido = SuperGrafo.Dijkstra("A");
+        System.out.println("Mapa de recorrido");
+        System.out.println("Destino   Peso total  Origen");
+        for (String NodosMapa : mapaRecorrido.keySet()) {
+            System.out.println(NodosMapa + "                 " + mapaRecorrido.get(NodosMapa).getPeso()+ "   " + mapaRecorrido.get(NodosMapa).getNodo());
+        }
+        
                 
         
         
